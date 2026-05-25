@@ -1,4 +1,4 @@
-input_file = "dogBreedFreqs_clean.frq.strat"
+input_file = "snp_panel/dogBreedFreqs_clean.frq.strat"
 output_file = "fastNGSadmix_ref.txt"
 nind_file = "nInd.txt"
 
@@ -9,14 +9,11 @@ breed_sizes = {}
 print(f"Reading raw PLINK data from {input_file}...")
 
 with open(input_file) as f:
-    next(f) 
-    
+    next(f)
     for line in f:
         parts = line.strip().split()
-        
         if len(parts) < 8:
             continue
-            
         snp_raw = parts[1]  
         breed = parts[2]    
         a0 = parts[3]      
@@ -24,17 +21,16 @@ with open(input_file) as f:
         freq = parts[5]    
         nchrobs = parts[7]  
         
-        snp = snp_raw.replace(":", "_") 
+        chrom, pos = snp_raw.split(":")[:2]
+        snp = f"{chrom}_{pos}"
         
         nind = str(int(float(nchrobs) / 2))
         
         breeds.add(breed)
-        
         if breed not in breed_sizes:
             breed_sizes[breed] = nind
 
         if snp not in snp_data:
-            chrom, pos = snp.split("_")
             snp_data[snp] = {
                 "chr": chrom.replace("chr", ""),
                 "pos": pos,
