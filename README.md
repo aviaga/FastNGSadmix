@@ -16,8 +16,8 @@ This pipeline determines the breed ancestry of an unknown dog sample using low-d
 ## Usage
 
 1. **Software Installation:**
- * Clone and compile ANGSD via git clone [https://github.com/ANGSD/angsd.git](https://github.com/ANGSD/angsd.git) and make.
- * Clone and compile FastNGSAdmix via git clone [https://github.com/e-jorsboe/fastNGSadmix.git](https://github.com/e-jorsboe/fastNGSadmix.git) and make.
+   * Clone and compile ANGSD via git clone [https://github.com/ANGSD/angsd.git](https://github.com/ANGSD/angsd.git) and make.
+   * Clone and compile FastNGSAdmix via git clone [https://github.com/e-jorsboe/fastNGSadmix.git](https://github.com/e-jorsboe/fastNGSadmix.git) and make.
 2. **Data:**
    * Obtain files for the reference genome or download via NIH. Local files must have all of .bed, .bim, and .fam.
    * Obtain the sample via SRA. Example script in download_data.sh
