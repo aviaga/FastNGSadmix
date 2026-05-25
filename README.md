@@ -2,7 +2,7 @@
 Implementation of FastNGSAdmix (https://www.popgen.dk/software/index.php/FastNGSadmix) for low coverage WGS data
 
 ## Overview
-This pipeline determines the breed ancestry of an unknown dog sample using low-depth Next-Generation Sequencing (NGS) data. Unlike traditional admixture tools, this workflow utilizes Genotype Likelihoods (via ANGSD) to account for sequencing uncertainty, providing highly accurate results without requiring called genotypes.
+This pipeline determines the breed ancestry of an unknown dog sample using low-depth Next-Generation Sequencing (NGS) data. 
 
 ## Prerequisites
 
