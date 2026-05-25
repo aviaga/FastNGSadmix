@@ -61,5 +61,3 @@ with open(nind_file, "w") as n_out:
     n_out.write("\t".join(breeds) + "\n")
     sizes_list = [breed_sizes[breed] for breed in breeds]
     n_out.write("\t".join(sizes_list) + "\n")
-
-print(f"Success! Generated {output_file} and {nind_file} for {len(breeds)} breeds.")
