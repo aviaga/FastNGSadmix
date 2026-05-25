@@ -1,0 +1,19 @@
+#!/bin/bash
+#$ -N run_plink
+#$ -cwd
+#$ -l h_data=8G,h_rt=04:00:00
+#$ -pe shared 2
+#$ -m bea
+#$ -o plink.log
+#$ -e plink.err
+
+source /u/local/Modules/default/init/bash
+module load plink
+
+plink \
+  --bfile ../snp_panel/QUAL20-0-G-MAF0.01-GENO0.2-LD250_50_0.8-10kSNPs_FST0.350 \
+  --freq \
+  --keep-allele-order \
+  --within ../snp_panel/dogPop.txt \
+  --chr-set 38 \
+  --out ../snp_panel/dogBreedFreqs_clean
