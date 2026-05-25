@@ -4,13 +4,11 @@ Implementation of FastNGSAdmix (https://www.popgen.dk/software/index.php/FastNGS
 ## Overview
 This pipeline determines the breed ancestry of an unknown dog sample using low-depth Next-Generation Sequencing (NGS) data. 
 
-## Prerequisites
-
 
 ## Pipeline Steps
-1. **Alignment:** Raw fastq files are aligned to the ROSY German Shepherd reference genome using BWA-MEM.
-2. **Genotype Likelihoods:** ANGSD calculates the statistical probability of genotypes at known variant sites, outputting a beagle format file.
-3. **Reference Panel Preparation:** PLINK calculates allele frequencies for known purebred populations.
+1. **Alignment:** Raw fastq files are aligned to the ROSY reference genome using BWA-MEM.
+2. **Genotype Likelihoods:** ANGSD calculates the statistical probability of genotypes at known SNP sites, outputting a beagle format file.
+3. **Reference Panel Preparation:** PLINK calculates allele frequencies for known populations.
 4. **Admixture Estimation:** fastNGSadmix uses the likelihoods and the reference panel to estimate breed proportions.
 
 ## Usage
