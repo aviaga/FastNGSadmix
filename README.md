@@ -8,10 +8,15 @@ This pipeline determines the breed ancestry of an unknown dog sample using low-d
 
 
 ## Pipeline Steps
-1. **Alignment:** Raw fastq files are aligned to the ROSY German Shepherd reference genome using BWA-MEM.
-2. **Genotype Likelihoods:** ANGSD calculates the statistical probability of genotypes at known variant sites, outputting a beagle format file.
-3. **Reference Panel Preparation:** PLINK calculates allele frequencies for known purebred populations. A custom Python script (`make_fastngs_ref.py`) reformats this data into the strict wide-format required by fastNGSadmix.
-4. **Admixture Estimation:** fastNGSadmix uses the likelihoods and the reference panel to estimate breed proportions.
+1. ### Software Installation ###:
+     a. Clone and compile ANGSD via git clone [https://github.com/ANGSD/angsd.git](https://github.com/ANGSD/angsd.git) and make.
+     b.  Clone and compile FastNGSAdmix via git clone [https://github.com/e-jorsboe/fastNGSadmix.git](https://github.com/e-jorsboe/fastNGSadmix.git) and make.
+
+2. 
+4. **Alignment:** Raw fastq files are aligned to the ROSY German Shepherd reference genome using BWA-MEM.
+5. **Genotype Likelihoods:** ANGSD calculates the statistical probability of genotypes at known variant sites, outputting a beagle format file.
+6. **Reference Panel Preparation:** PLINK calculates allele frequencies for known purebred populations.
+7. **Admixture Estimation:** fastNGSadmix uses the likelihoods and the reference panel to estimate breed proportions.
 
 ## Usage
 1. Reference Genome: Obtain files for the reference genome or download via NIH. Local files must have all of .bed, .bim, and .fam.
