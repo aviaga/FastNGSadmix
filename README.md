@@ -19,8 +19,8 @@ This pipeline determines the breed ancestry of an unknown dog sample using low-d
 2. **Data:**
    * Obtain files for the reference genome or download via NIH. Local files must have all of .bed, .bim, and .fam.
    * Obtain the sample via SRA. Example script in download_data.sh
-   * Obtain SNP list (in /data/SNPs.txt)
-   * Obtain population info (/data/dogPop.txt)
+   * Obtain SNP list
+   * Obtain population info
 3. **Index and alignment of the reference genome:** Index the .fa reference using bwa, then perform alignment by running bwa_align.sh (qsub can be used) 
 4. **Generate genotype likelihoods:** Calculate genotype probabilities for the sample. Run_angsd.sh (qsub can be used)
 5. **Calculate allele frequencies:** Use PLINK to calculate the baseline allele frequencies for the  population in the reference panel. Run run_plink.sh (qsub can be used) 
