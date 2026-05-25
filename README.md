@@ -14,3 +14,16 @@ This pipeline determines the breed ancestry of an unknown dog sample using low-d
 4. **Admixture Estimation:** fastNGSadmix uses the likelihoods and the reference panel to estimate breed proportions.
 
 ## Usage
+1. Reference Genome: Obtain files for the reference genome or download via NIH. Local files must have all of .bed, .bim, and .fam.
+2. Obtain the sample via SRA. Example script in download_data.sh
+3. Index the reference genome using bwa. Example below:
+  1. module load bwa
+  2. bwa index UU_Cfam_GSD_1.0_ROSY.fa
+
+4. Perform alignment, run bwa_align.sh
+5. Make ANGSD: https://github.com/ANGSD/angsd
+6. Obtain SNP list and then run ANGSD: run_angsd.sh
+7. Breed annotations are in dogPop.txt. Run Plink using that: run_plink.sh
+8. Reformat the generated reference file and generate a separate .txt file with the number of individuals per breed (run make_fastngs_ref.py)
+9. Make FastNGSadmix: https://github.com/e-jorsboe/fastNGSadmix.git
+10. Run FastNGSadmix: run_fastngsadmix.sh
