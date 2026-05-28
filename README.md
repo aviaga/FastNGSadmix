@@ -26,7 +26,7 @@ This pipeline determines the breed ancestry of an unknown dog sample using low-d
      * make 
 3. **Data:**
    * Obtain files for the reference genome or download via NIH. Local files must have all of .fa, .bed, .bim, and .fam. The .fa file should be placed in /reference and all other files should be in snp_panel. 
-   * Obtain the sample via SRA. Example script in download_data.sh. Place this script in the scripts directory and can be run from dog_admixture as: bash scripts/download_data.sh <sample_name> (qsub can also be used) 
+   * Obtain the sample via SRA. Example script in download_data.sh. Place this script in the scripts directory and can be run from root as: bash scripts/download_data.sh <sample_name> (qsub can also be used) 
    * Obtain SNP list and place it under the snp_panel directory 
    * Obtain population info and place it under snp_panel directory
 4. **Index and alignment of the reference genome:**
