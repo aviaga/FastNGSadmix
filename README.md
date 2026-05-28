@@ -21,9 +21,9 @@ This pipeline determines the breed ancestry of an unknown dog sample using low-d
      * cd angsd
      * make 
    *  Go to the dog_admixture/fastngsadmix directory. Then clone, compile, and make FastNGSAdmix via git clone [https://github.com/e-jorsboe/fastNGSadmix.git](https://github.com/e-jorsboe/fastNGSadmix.git).
-     * git clone https://github.com/e-jorsboe/fastNGSadmix.git fastNGSadmix
-     * cd fastNGSadmix
-     * make 
+      * git clone https://github.com/e-jorsboe/fastNGSadmix.git fastNGSadmix
+      * cd fastNGSadmix
+      * make 
 3. **Data:**
    * Obtain files for the reference genome or download via NIH. Local files must have all of .fa, .bed, .bim, and .fam. The .fa file should be placed in /reference and all other files should be in snp_panel. 
    * Obtain the sample via SRA. Example script in download_data.sh. Place this script in the scripts directory and can be run from root as: bash scripts/download_data.sh <sample_name> (qsub can also be used) 
@@ -35,4 +35,7 @@ This pipeline determines the breed ancestry of an unknown dog sample using low-d
 5. **Generate genotype likelihoods:** Calculate genotype probabilities for the sample. Place run_angsd.sh in scripts, from root run: bash scripts/run_angsd.sh <sample_name> (qsub can be used)
 6. **Calculate allele frequencies:** Use PLINK to calculate the baseline allele frequencies for the  population in the reference panel. Place run_plink.sh in scripts, from root run: bash scripts/run_plink.sh (qsub can be used) 
 7. **Reformatting the reference panel:** Reformat the generated file from plink to convert to wide format, generate a separate .txt file with the number of individuals per breed. Place make_fastngs_ref.py in scripts, from root run: python3 scripts/make_fastngs_ref.py
-8. **Estimate admixture:** Run: Place run_fastngsadmix.sh in scripts, and run from root: bash scripts/run_fastngsadmix.sh (qsub can be used) 
+8. **Estimate admixture:** Run: Place run_fastngsadmix.sh in scripts, and run from root: bash scripts/run_fastngsadmix.sh <sample_name> (qsub can be used). Results will be in /results as a .qopt file. 
+
+
+Sample download (step 3b), read alignment (step 4), genotype likelihood generation (step 5), and estimation of admixture (step 8) need to be run per sample. All other steps need to be run once (only for the reference). Currently, pipeline supports only dynamic naming for the sample. 
