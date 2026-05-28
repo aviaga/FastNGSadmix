@@ -26,13 +26,13 @@ This pipeline determines the breed ancestry of an unknown dog sample using low-d
      * make 
 3. **Data:**
    * Obtain files for the reference genome or download via NIH. Local files must have all of .fa, .bed, .bim, and .fam. The .fa file should be placed in /reference and all other files should be in snp_panel. 
-   * Obtain the sample via SRA. Example script in download_data.sh. Place this script in the scripts directory and can be run from dog_admixture root as: bash scripts/download_data.sh sample_name. qsub can also be used. 
+   * Obtain the sample via SRA. Example script in download_data.sh. Place this script in the scripts directory and can be run from dog_admixture as: bash scripts/download_data.sh <sample_name> (qsub can also be used) 
    * Obtain SNP list and place it under the snp_panel directory 
    * Obtain population info and place it under snp_panel directory
 4. **Index and alignment of the reference genome:**
-     * Index the .fa reference using bwa by loading the module (module load bwa), followed by bwa index name.fa
-     * Place bwa_align.sh in scripts, then perform alignment by running it as scripts/bwa_align.sh <sample_name> (qsub can be used) 
-5. **Generate genotype likelihoods:** Calculate genotype probabilities for the sample. Place run_angsd.sh in scripts, run scripts/run_angsd.sh <sample_name> (qsub can be used)
-6. **Calculate allele frequencies:** Use PLINK to calculate the baseline allele frequencies for the  population in the reference panel. Place run_plink.sh in scripts, run scripts/run_plink.sh (qsub can be used) 
-7. **Reformatting the reference panel:** Reformat the generated file from plink to convert to wide format, generate a separate .txt file with the number of individuals per breed. Place the .sh file in scripts, run as python3 scripts/make_fastngs_ref.py)
-8. **Estimate admixture:** Run: Place .sh file in scripts, and run scripts/run_fastngsadmix.sh (qsub can be used) 
+     * Index the .fa reference using bwa by loading the module (module load bwa), followed by bwa index <reference_name>.fa
+     * Place bwa_align.sh in scripts, then perform alignment by running from root: bash scripts/bwa_align.sh <sample_name> (qsub can be used) 
+5. **Generate genotype likelihoods:** Calculate genotype probabilities for the sample. Place run_angsd.sh in scripts, from root run: bash scripts/run_angsd.sh <sample_name> (qsub can be used)
+6. **Calculate allele frequencies:** Use PLINK to calculate the baseline allele frequencies for the  population in the reference panel. Place run_plink.sh in scripts, from root run: bash scripts/run_plink.sh (qsub can be used) 
+7. **Reformatting the reference panel:** Reformat the generated file from plink to convert to wide format, generate a separate .txt file with the number of individuals per breed. Place make_fastngs_ref.py in scripts, from root run: python3 scripts/make_fastngs_ref.py
+8. **Estimate admixture:** Run: Place run_fastngsadmix.sh in scripts, and run from root: bash scripts/run_fastngsadmix.sh (qsub can be used) 
