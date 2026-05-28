@@ -7,10 +7,14 @@
 #$ -o angsd.log
 #$ -e angsd.err
 
+cd $SGE_O_WORKDIR
+
+SAMPLE=$1
+
 # File Paths (Relative to project root)
 RAW_SNPS="snp_panel/SNPs.txt"
 SITES_FILE="snp_panel/SNPs.sites4ANGSD.txt"
-BAM_FILE="bam/DRR608889.sorted.bam"
+BAM_FILE="bam/${SAMPLE}.sorted.bam"
 OUT_DIR="ANGSD_results"
 ANGSD_EXEC="angsd/angsd"
 
@@ -20,6 +24,7 @@ awk -F':' '{ print $1, $2, $3, $4 }' $RAW_SNPS > $SITES_FILE
 
 $ANGSD_EXEC sites index $SITES_FILE
 
+# Run ANGSD using the dynamic sample name
 $ANGSD_EXEC \
   -i $BAM_FILE \
   -GL 2 \
@@ -29,4 +34,4 @@ $ANGSD_EXEC \
   -minMapQ 0 \
   -minQ 0 \
   -sites $SITES_FILE \
-  -out $OUT_DIR/DRR608889_final
+  -out $OUT_DIR/${SAMPLE}_final
