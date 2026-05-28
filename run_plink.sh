@@ -10,10 +10,12 @@
 source /u/local/Modules/default/init/bash
 module load plink
 
+cd $SGE_O_WORKDIR
+
 plink \
   --bfile snp_panel/QUAL20-0-G-MAF0.01-GENO0.2-LD250_50_0.8-10kSNPs_FST0.350 \
   --freq \
   --keep-allele-order \
   --within snp_panel/dogPop.txt \
   --chr-set 38 \
-  --out /snp_panel/dogBreedFreqs_clean
+  --out snp_panel/dogBreedFreqs_clean
