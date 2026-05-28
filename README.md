@@ -17,11 +17,11 @@ This pipeline determines the breed ancestry of an unknown dog sample using low-d
    Run: mkdir -p dog_admixture/{reference,raw_fastq,sra,bam,ANGSD_results,snp_panel,scripts,fastngsadmix}
 2.  **Software Installation:**
    * Go to the dog_admixture root directory. Then clone, compile, and make ANGSD [https://github.com/ANGSD/angsd.git](https://github.com/ANGSD/angsd.git).
-   * * git clone https://github.com/ANGSD/angsd.git angsd
+     * git clone https://github.com/ANGSD/angsd.git angsd
      * cd angsd
      * make 
    *  Go to the dog_admixture/fastngsadmix directory. Then clone, compile, and make FastNGSAdmix via git clone [https://github.com/e-jorsboe/fastNGSadmix.git](https://github.com/e-jorsboe/fastNGSadmix.git).
-   * * git clone https://github.com/e-jorsboe/fastNGSadmix.git fastNGSadmix
+     * git clone https://github.com/e-jorsboe/fastNGSadmix.git fastNGSadmix
      * cd fastNGSadmix
      * make 
 3. **Data:**
