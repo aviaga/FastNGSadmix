@@ -1,12 +1,12 @@
 input_file = "snp_panel/dogBreedFreqs_clean.frq.strat"
-output_file = "fastNGSadmix_ref.txt"
-nind_file = "nInd.txt"
+output_file = "fastngsadmix/fastNGSadmix_ref.txt"
+nind_file = "fastngsadmix/nInd.txt"
+
 
 snp_data = {}
 breeds = set()
 breed_sizes = {}
 
-print(f"Reading raw PLINK data from {input_file}...")
 
 with open(input_file) as f:
     next(f)
@@ -42,7 +42,6 @@ with open(input_file) as f:
 
 breeds = sorted(list(breeds))
 
-print("Writing Wide-Format Reference Panel...")
 with open(output_file, "w") as out:
     header = ["id", "chr", "pos", "name", "A0", "A1"] + breeds
     out.write("\t".join(header) + "\n")
@@ -52,7 +51,6 @@ with open(output_file, "w") as out:
             row.append(snp_data[snp]["freqs"].get(breed, "0"))
         out.write("\t".join(row) + "\n")
 
-print("Writing Individual Counts...")
 with open(nind_file, "w") as n_out:
     n_out.write("\t".join(breeds) + "\n")
     sizes_list = [breed_sizes[breed] for breed in breeds]
