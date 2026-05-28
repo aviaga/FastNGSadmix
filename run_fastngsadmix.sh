@@ -9,11 +9,15 @@
 
 source /u/local/Modules/default/init/bash
 
+cd $SGE_O_WORKDIR
+
+SAMPLE=$1
+
 mkdir -p results
 
 fastngsadmix/fastNGSadmix/fastNGSadmix \
-  -likes ANGSD_results/DRR608889_final.beagle.gz \
-  -fname fastNGSadmix_ref.txt \
-  -Nname nInd.txt \
-  -out results/admixResults \
+  -likes ANGSD_results/${SAMPLE}_final.beagle.gz \
+  -fname fastngsadmix/fastNGSadmix_ref.txt \
+  -Nname fastngsadmix/nInd.txt \
+  -out results/${SAMPLE}_admix \
   -whichPops all
