@@ -35,7 +35,7 @@ This pipeline determines the breed ancestry of an unknown dog sample using low-d
 5. **Generate genotype likelihoods:** Calculate genotype probabilities for the sample. Place run_angsd.sh in scripts, from root run: bash scripts/run_angsd.sh <sample_name> (qsub can be used)
 6. **Calculate allele frequencies:** Use PLINK to calculate the baseline allele frequencies for the  population in the reference panel. Place run_plink.sh in scripts, from root run: bash scripts/run_plink.sh (qsub can be used) 
 7. **Reformatting the reference panel:** Reformat the generated file from plink to convert to wide format, generate a separate .txt file with the number of individuals per breed. Place make_fastngs_ref.py in scripts, from root run: python3 scripts/make_fastngs_ref.py
-8. **Estimate admixture:** Run: Place run_fastngsadmix.sh in scripts, and run from root: bash scripts/run_fastngsadmix.sh <sample_name> (qsub can be used). Results will be in /results as a .qopt file. 
+8. **Estimate admixture:** Place run_fastngsadmix.sh in scripts, and run from root: bash scripts/run_fastngsadmix.sh <sample_name> (qsub can be used). Results will be in /results as a .qopt file. 
+9. **Display results (Optional):** To more cleanly display the output for the file and only show breeds that are in the sample per the estimation software, run summarize_admix.py. Run as: python3 scripts/summarize_admix.py results/<sample_name>_admix.qopt
 
-
-Sample download (step 3b), read alignment (step 4), genotype likelihood generation (step 5), and estimation of admixture (step 8) need to be run per sample. All other steps need to be run once (only for the reference). Currently, pipeline supports only dynamic naming for the sample. 
+Sample download (step 3b), read alignment (step 4), genotype likelihood generation (step 5), and estimation of admixture (step 8) need to be run per sample (as well as the optional display, step 9). All other steps need to be run once (only for the reference). Currently, pipeline supports only dynamic naming for the sample. 
