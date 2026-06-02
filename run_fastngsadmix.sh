@@ -9,7 +9,7 @@
 
 source /u/local/Modules/default/init/bash
 
-cd $SGE_O_WORKDIR
+cd "${SGE_O_WORKDIR:-.}"
 
 SAMPLE=$1
 
