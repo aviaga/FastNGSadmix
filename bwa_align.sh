@@ -11,7 +11,7 @@ source /u/local/Modules/default/init/bash
 module load bwa
 module load samtools
 
-cd $SGE_O_WORKDIR/bam
+cd "${SGE_O_WORKDIR:-.}/bam"
 
 bwa mem -t 4 \
   ../reference/UU_Cfam_GSD_1.0_ROSY.fa \
