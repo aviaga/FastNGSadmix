@@ -9,7 +9,7 @@
 
 source /u/local/Modules/default/init/bash
 
-cd $SGE_O_WORKDIR/raw_fastq
+cd "${SGE_O_WORKDIR:-.}/raw_fastq"
 
 module load sra-tools/2.10.9
 prefetch $1
