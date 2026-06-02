@@ -7,8 +7,7 @@
 #$ -o angsd.log
 #$ -e angsd.err
 
-cd $SGE_O_WORKDIR
-
+cd "${SGE_O_WORKDIR:-.}"
 SAMPLE=$1
 
 # File Paths (Relative to project root)
