@@ -13,7 +13,7 @@ module load plink
 cd "${SGE_O_WORKDIR:-.}"
 
 plink \
-  --bfile snp_panel/snps_final_26_04_06_6 \
+  --bfile snp_panel/snps_final_26_04_06_6\
   --freq \
   --keep-allele-order \
   --within snp_panel/dogPop.txt \
