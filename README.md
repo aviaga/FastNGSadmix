@@ -25,10 +25,12 @@ This pipeline determines the breed ancestry of an unknown dog sample using low-d
       * cd fastNGSadmix
       * make 
 3. **Data:**
-   * Obtain files for the reference genome or download via NIH. Local files must have all of .fa, .bed, .bim, and .fam. The .fa file should be placed in /reference and all other files should be in snp_panel. 
+   * Obtain files for the reference genome or download via NIH. Local files must have all of .fa, .bed, .bim, and .fam. The .fa file should be placed in /reference and all other files should be in snp_panel. Example data has snps_final_26_04_06_6 as the .bed, .bim, and .fam files. 
    * Obtain the sample via SRA. Example script in download_data.sh. Place this script in the scripts directory and can be run from root as: qsub scripts/download_data.sh <sample_name> 
-   * Obtain SNP list and place it under the snp_panel directory 
-   * Obtain population info and place it under snp_panel directory
+   * Obtain SNP list and place it under the snp_panel directory.
+     * If no SNP list is provided, it can be generated from the .bim file by running the following command from root: awk '{print $2}' snp_panel/SNP_panel_name.bim > snp_panel/SNPs.txt. For example, with the provided example data:  awk '{print $2}' snp_panel/snps_final_26_04_06_6.bim > snp_panel/SNPs.txt
+   * Obtain population info and place it under snp_panel directory. Example file named as dogPop.txt
+     * IMPORTANT: The naming of the accession numbers in the SNP panel for the .fam file must match EXACTLY with those of the population info. The example file has extra characters and requires cleanup, the script for this is clean_fam_ids.sh. This can be run as qsub scripts/clean_fam_ids.sh snp_panel/<sample_name>.fam. For example: bash scripts/clean_fam_ids.sh snp_panel/snps_final_26_04_06_6.fam
 4. **Index and alignment of the reference genome:**
      * Index the .fa reference using bwa by loading the module (module load bwa), followed by bwa index <reference_name>.fa
      * Place bwa_align.sh in scripts, then perform alignment by running from root: qsub scripts/bwa_align.sh <sample_name> 
