@@ -20,4 +20,5 @@ fastngsadmix/fastNGSadmix/fastNGSadmix \
   -fname fastngsadmix/fastNGSadmix_ref.txt \
   -Nname fastngsadmix/nInd.txt \
   -out results/${SAMPLE}_admix \
-  -whichPops all
+  -whichPops all \ 
+  -tol 1e-8
